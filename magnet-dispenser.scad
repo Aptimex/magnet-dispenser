@@ -1,3 +1,16 @@
+/*
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
+*/
+
+/*
+Original model this is based on: https://makerworld.com/en/models/180303
+Please note that the designer of the original model licensed it under the CC-BY-NC-SA license, which prohibits commercial use and requires derivitives to maintain the same prohibition. But I could not find any software license with a similar prohibition, so maybe just be nice and don't use this for commercial purposes either. 
+*/
+
 
 /* [Magnets] */
 magnet_diameter = 8.0;
