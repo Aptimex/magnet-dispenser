@@ -6,16 +6,27 @@ label = "8mm X 2mm";
 textSize = 8.0;
 
 /* [Basic] */
+//Longer holds more magnets
 bodyLen = 75.0;
+//Magnet tube will be this thick at its thinnest spots
 bodyWall = 1.2;
+//Thicker = more dispenser resistance
 armThick = 2.4;
+//Dispenser arm will not be longer than this; shorter = more resistance
 maxArmLen = 72.2;
+//How much of the arm to attach to the body
 hingeReinforcement = 15.0;
-tabOffset = 2;
 
 /* [Advanced] */
+//Increase tube diameter by this much to ensure smooth magnet travel
 tube_tolerance = 0.5;
+//Plastic between the main tube and the single magnet on the end
 endCapThickness = 0.8;
+//Diameter of the hole to make in the endCap; helpful for getting stuch magnets out of the tube
+throughHoleDia = 0;
+//Move the dispenser tab back if its running into the body too much
+tabOffset = 0;
+//Arm will be angled so that there is this much space between the body and end of the dispenser tab
 tabBodyGap = 4.0;
 
 
@@ -27,9 +38,9 @@ e = 0.001 + 0;
 
 
 magThick = magnet_thickness;
-slotW = magnet_diameter + 1;
 slotD = magThick + 0.6;
 tubeDia = magnet_diameter+tube_tolerance;
+slotW = tubeDia + .3;
 tubeLen = bodyLen - magThick -endCapThickness - slotD;
 bodySide = tubeDia + bodyWall*2;
 
@@ -73,6 +84,11 @@ module body() {
         rotate([0, 90, 0]) 
         cube(size=[tubeDia, tubeDia, magThick + 2*e], center=false); //change first tubeDia to be /2 for a top-only square
         */
+        
+        //Through hole
+        translate([-e, bodySide/2, bodySide/2]) 
+        rotate([0, 90, 0]) 
+        cylinder(d=throughHoleDia, h=magThick+endCapThickness+2*e, center=false);
     }
     
     //tab sled
