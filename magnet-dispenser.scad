@@ -1,21 +1,22 @@
 
 /* [Magnets] */
-magnet_diameter = 8;
-magnet_thickness = 2;
+magnet_diameter = 8.0;
+magnet_thickness = 2.0;
 label = "8mm X 2mm";
-textSize = 8;
+textSize = 8.0;
 
 /* [Basic] */
-bodyLen = 75;
+bodyLen = 75.0;
 bodyWall = 1.2;
 armThick = 2.4;
 maxArmLen = 72.2;
-hingeReinforcement = 15;
+hingeReinforcement = 15.0;
+tabOffset = 2;
 
 /* [Advanced] */
 tube_tolerance = 0.5;
 endCapThickness = 0.8;
-tabBodyGap = 4;
+tabBodyGap = 4.0;
 
 
 module null() {
@@ -118,13 +119,14 @@ module arm() {
     //tab
     tabTolerance = 2;
     //tabThick = max(slotD - 1, 0.8);
-    tabThick = magThick;
+    //tabThick = max(magThick*0.75, magThick - 1);
+    tabThick = min(magThick, 2.4);
     tabOffsetV = (bodySide-slotW+tabTolerance)/2;
-    translate([0, -bodySide+(tabThick/2), tabOffsetV]) 
+    translate([tabOffset, -bodySide+(tabThick/2), tabOffsetV]) 
     cube(size=[tabThick, bodySide-(tabThick/2), slotW - tabTolerance], center=false);
     
     //round off tab end
-    translate([tabThick/2, -bodySide+(tabThick/2), tabOffsetV]) 
+    translate([tabThick/2 + tabOffset, -bodySide+(tabThick/2), tabOffsetV]) 
     cylinder(d=tabThick, h=(slotW - tabTolerance), center=false);
     
     
